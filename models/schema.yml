@@ -13,7 +13,7 @@ sources:
             description: primary key of the table sales
             tests:
               - unique:
-                  column_name: "(product_id || '_' || date_date)"
+                  column_name: "(pdt_id || '_' || orders_id)"
               - not_null
               
                   
@@ -22,10 +22,11 @@ sources:
         description: greenweez product raw data
         columns:
           - name: products_id
-            description: primary key of the table products
+            description: id of product
             tests:
               - unique
               - not_null
+              
       
       - name: ship
         identifier: raw_gz_ship
