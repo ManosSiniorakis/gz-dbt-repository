@@ -98,5 +98,15 @@ models:
       - unique:
           column_name: "(date_date || '_' || campaign_key)"
 
+  - name: int_campaigns_day
+    description: aggregates costs, impressions and clicks per day      
+    columns: 
+      - name: date_date
+        description: date of data collection
+        tests:
+          - not_null
+              
+              
+
 
        
