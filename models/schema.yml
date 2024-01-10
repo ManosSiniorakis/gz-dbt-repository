@@ -12,9 +12,10 @@ sources:
           - name: orders_id
             description: primary key of the table sales
             tests:
+              - not_null
+        tests:
               - unique:
                   column_name: "(pdt_id || '_' || orders_id)"
-              - not_null
               
                   
       - name: product
