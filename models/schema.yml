@@ -38,4 +38,75 @@ sources:
             tests:
               - unique
               - not_null
+
+
+
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: gwz adwords dara
+        columns:
+          - name: date_date
+            description: date of data collection
+            tests:
+              - not_null  
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: gwz bing data
+        columns:
+          - name: date_date
+            description: date of collection
+            tests:
+              - not_null  
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: gwz criteo data
+        columns:
+          - name: date_date
+            description: date of collection
+            tests:
+              - not_null  
+      
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: gwz facebook data
+        columns:
+          - name: date_date
+            description: date of collection
+            tests:
+              - not_null  
+
+
+
+
+models:
+  - name: stg_raw__sales
+    columns:
+      - name: orders_id
+        description: primary key of the table sales
+        tests:
+          - not_null
+    tests:
+      - unique:
+          column_name: "(products_id || '_' || orders_id)"
+
+
+  - name: int_campaigns
+    description: combines costs from all campaigns      
+    tests:
+      - unique:
+          column_name: "(date_date || '_' || campaign_key)"
+
+  - name: int_campaigns_day
+    description: aggregates costs, impressions and clicks per day      
+    columns: 
+      - name: date_date
+        description: date of data collection
+        tests:
+          - not_null
+              
+              
+
+
        
